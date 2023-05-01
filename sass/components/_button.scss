@@ -1,0 +1,97 @@
+.btn-white {
+    background-color: $color-white;
+    color: $color-gray;
+
+    // 按鈕效果2-3-懸停+放大
+    &::after {
+        background-color: $color-white;
+    }
+}
+.btn-green {
+    background-color: $color-primary-dark;
+    color: $color-white;
+
+    // 按鈕效果2-3-懸停+放大
+    &::after {
+        background-color: $color-primary-dark;
+    }
+}
+
+.btn-animated {
+    animation: moveInBtn .5s ease-out .75s;
+
+    // backwards 在沒有設定 animation-delay 跟 第一格關鍵影格的話，看起來會跟 none 的效果一樣。
+    animation-fill-mode: backwards;
+}
+
+.btn:link,
+.btn:visited {
+    font-size: 2rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 3rem;
+    display: inline-block;
+    border-radius: 10rem;
+    transition: all .2s;
+    font-size: $default-font-size;
+
+    // 按鈕效果2-2懸停+放大
+    position: relative;
+
+
+    // 按鈕效果1-懸停+陰影
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 1rem 2rem rgba($color-black, .2);
+
+        // 按鈕效果2-4-懸停時
+        &:after {
+            transform: scale(1.4) scaleY(1.6);
+            opacity: 0;
+        }
+    }
+
+    &:active {
+        transform: translateY(-1px);
+        box-shadow: 0 1rem 1rem rgba($color-black, .2);
+    }
+
+    // 按鈕效果2-1懸停+放大
+    &::after {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 10rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all .4s;
+    }    
+}
+.btn-text {
+    &:link,
+    &:visited{
+        display: inline-block;
+        font-weight: 700;
+        font-size: $default-font-size;
+        color: $color-primary;
+        text-decoration: none;
+        padding: 5px;
+        border-bottom: 1px solid $color-primary;
+        transition: all .2s;
+    }
+
+    &:hover {
+        background-color: $color-primary;
+        color: $color-white;
+        box-shadow: 0 1rem 2rem rgba($color-black, .15);
+        border-radius: 100px;
+        transform: translateY(-2px) scale(1.2);
+    }
+    &:active {
+        box-shadow: 0 .5rem 1rem rgba($color-black, .15);
+        transform: translateY(0);
+    }
+}
