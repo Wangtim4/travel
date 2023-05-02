@@ -1,0 +1,18 @@
+.bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    // 背景改為影片顯示文字
+    z-index: -1;
+    opacity: .15;
+
+    &__content {
+        // 解決邊界溢出
+        height: 100%;
+        width: 100%;
+        // 对图片进行剪切，保留原始比例，決定圖片填滿方式的屬性
+        object-fit: cover;
+    }
+}
