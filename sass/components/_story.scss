@@ -1,0 +1,78 @@
+.story {
+    width: 75%;
+    margin: 0 auto;
+    box-shadow: 0 3rem 6rem rgba($color-black, .3);
+    background-color: $color-white;
+    border-radius: 3px;
+    padding: 6rem;
+    padding-left: 9rem;
+    font-size: $default-font-size;
+
+    // 1.父層級-傾斜
+    transform: skewX(-12deg);
+    // 1.圖片中文字置中
+    position: relative;
+
+    &__shape {
+        width: 15rem;
+        height: 15rem;
+        // background-color: red;
+
+        // shape-outside 只能用在新的瀏覽器和浮動元素上
+        float: left;
+        -webkit-shape-outside: circle(50% at 50% 50%);
+        // shape-outside: circle(50% at 50% 50%);第一個參數為圓半徑長，at 50% 50%圓中心位置
+        shape-outside: circle(50% at 50% 50%);
+
+        // 形狀
+        -webkit-clip-path: circle(50% at 50% 50%);
+        clip-path: circle(50% at 50% 50%);
+
+        // 1.向左位移 2.子層級-傾斜
+        transform: translateX(-3rem) skewX(12deg);
+     
+    }
+    &__img {
+        height: 100%;
+        // 圖片效果
+        transform: translateX(-4rem) scale(1.4);
+        transition: all .5s;
+    }
+
+    &__text {
+        // 2.子層級-傾斜
+        transform: skewX(12deg);
+    }
+
+    &__caption {
+        color: $color-white;
+        text-align: center;
+        text-transform: uppercase;
+        font-size: $default-font-size;
+
+        // 文字懸停效果 
+        transform:translate(-50%, 20%) ;
+        opacity: 0;
+        transition: all .5s;
+        // 背面可見性-消除文字晃動
+        backface-visibility: hidden;
+
+        // 2.圖片中文字定位置中
+        position:absolute;
+        top: 50%;
+        left: 50%;
+        // transform: translate(-50%, -50%);
+    }
+    // 文字懸停效果  
+    &:hover &__caption {
+        opacity: 1;
+        transform:translate(-50% ,-50%) ;
+    }
+
+    &:hover &__img {
+        // 圖片效果
+        transform: translateX(-4rem) scale(1);
+        // 模糊效果 1.blur(3px)模糊 2.brightness(80%)亮暗程度(大於等於100%為變暗)
+        filter: blur(3px) brightness(80%);
+    }
+}
